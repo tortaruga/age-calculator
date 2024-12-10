@@ -1,0 +1,159 @@
+
+@use 'Sass:math';
+@import '_colors';
+
+@mixin flex($dir, $justify, $align, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@function px-to-rem($px, $base: 16) {
+    @return math.div($px, $base) * 1rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 1rem;  
+    background-color: $bg; 
+    font-family: poppins, sans-serif; 
+} 
+
+
+main {
+    min-height: 100vh;
+    @include flex(row, center, center, );
+} 
+
+
+
+.age-calculator {
+    background-color: $white; 
+    padding: 3rem  1.3rem;   
+    border-radius: 1rem 1rem 4rem 1rem;   
+}
+
+.input-container {
+    @include flex(row, center, baseline, ); 
+    gap: .8rem;    
+    border-bottom: .05rem solid $light-grey;
+    padding-bottom: 2.5rem;       
+}
+ 
+label {
+    text-transform: uppercase; 
+    @include flex(column, flex-start, flex-start, );
+    gap: .3rem; 
+    font-weight: 700; 
+    color: $grey;
+    letter-spacing: .15rem;  
+ }
+
+input {
+    font-family: inherit; 
+    font-size: px-to-rem(32, );
+    width: px-to-rem(100, );
+    border-radius: .5rem;
+    border: .05rem solid $light-grey; 
+    padding: .5rem;   
+    font-weight: 700; 
+    color: $text;
+}
+
+.submit-btn {
+    border: none;
+    border-radius: 50%; 
+    aspect-ratio: 1; 
+    width: px-to-rem(70, );     
+    background: url(./assets/images/icon-arrow.svg) $accent; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.5rem;  
+    transform: translateY(-50%);    
+    margin: auto; 
+    display: block; 
+    cursor: pointer;
+
+    &:hover {
+        background-color: $text;  
+    }
+}
+
+
+.result-span {
+    color: $accent; 
+}
+
+.result-p {
+    font-size: px-to-rem(60, );   
+    font-style: italic; 
+    font-weight: 800; 
+    margin: 0; 
+    line-height: 110%;    
+}
+ 
+input:focus { 
+    outline-color: $accent;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: .8rem;
+}
+
+a {
+    text-decoration: none;
+    color: $accent;
+    font-weight: 700; 
+    &:hover {
+        color: $grey
+    }
+}
+
+.error {
+    font-size: .8rem; 
+    color: $error; 
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;   
+    width: 100px;
+}
+
+input.err { 
+    border-color: $error
+}
+
+label.err {
+    color: $error;
+}
+
+@media screen and (min-width: 800px) {
+    .age-calculator {
+        padding-inline: 2rem; 
+        width: px-to-rem(700, ) ;
+    }  
+
+    .input-container {
+        justify-content: flex-start; 
+        gap: 1rem; 
+    }
+
+    input {
+        width: px-to-rem(150, );
+    }
+
+    .submit-btn {
+        position: relative;
+        left: 45%;            
+    }
+
+    .result-p {
+        font-size: px-to-rem(80, ); 
+    }
+}

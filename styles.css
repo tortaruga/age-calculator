@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  background-color: hsl(0, 0%, 94%);
+  font-family: poppins, sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.age-calculator {
+  background-color: hsl(0, 0%, 100%);
+  padding: 3rem 1.3rem;
+  border-radius: 1rem 1rem 4rem 1rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.8rem;
+  border-bottom: 0.05rem solid hsl(0, 0%, 86%);
+  padding-bottom: 2.5rem;
+}
+
+label {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.3rem;
+  font-weight: 700;
+  color: hsl(0, 1%, 44%);
+  letter-spacing: 0.15rem;
+}
+
+input {
+  font-family: inherit;
+  font-size: 2rem;
+  width: 6.25rem;
+  border-radius: 0.5rem;
+  border: 0.05rem solid hsl(0, 0%, 86%);
+  padding: 0.5rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 8%);
+}
+
+.submit-btn {
+  border: none;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  width: 4.375rem;
+  background: url(./assets/images/icon-arrow.svg) hsl(259, 100%, 65%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.5rem;
+  transform: translateY(-50%);
+  margin: auto;
+  display: block;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  background-color: hsl(0, 0%, 8%);
+}
+
+.result-span {
+  color: hsl(259, 100%, 65%);
+}
+
+.result-p {
+  font-size: 3.75rem;
+  font-style: italic;
+  font-weight: 800;
+  margin: 0;
+  line-height: 110%;
+}
+
+input:focus {
+  outline-color: hsl(259, 100%, 65%);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+}
+
+a {
+  text-decoration: none;
+  color: hsl(259, 100%, 65%);
+  font-weight: 700;
+}
+a:hover {
+  color: hsl(0, 1%, 44%);
+}
+
+.error {
+  font-size: 0.8rem;
+  color: hsl(0, 100%, 67%);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  width: 100px;
+}
+
+input.err {
+  border-color: hsl(0, 100%, 67%);
+}
+
+label.err {
+  color: hsl(0, 100%, 67%);
+}
+
+@media screen and (min-width: 800px) {
+  .age-calculator {
+    padding-inline: 2rem;
+    width: 43.75rem;
+  }
+  .input-container {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  input {
+    width: 9.375rem;
+  }
+  .submit-btn {
+    position: relative;
+    left: 45%;
+  }
+  .result-p {
+    font-size: 5rem;
+  }
+}/*# sourceMappingURL=styles.css.map */
