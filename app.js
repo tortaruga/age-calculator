@@ -164,7 +164,10 @@ function getResult() {
     
     if (ageDays < 0) { 
         // if result is negative subtract one month and add the number of last month's days to daysAge
-        ageMonths = ageMonths === 11 ? 0 : ageMonths--; 
+        ageMonths = ageMonths === 0 ? 11 : ageMonths--; 
+        if (ageMonths === 11) {
+            ageYears--;
+        }
         ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); 
     }
  
