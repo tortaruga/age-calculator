@@ -36,7 +36,7 @@ main {
 .age-calculator {
     background-color: $white; 
     padding: 3rem  1.3rem;   
-    border-radius: 1rem 1rem 4rem 1rem;    
+    border-radius: 1rem 1rem 7rem 1rem;       
 
 }
 
@@ -144,7 +144,9 @@ label.err {
 @media screen and (min-width: px-to-rem(800)) {
     .age-calculator {
         padding-inline: 2rem; 
-        width: px-to-rem(700, ) ;
+        width: px-to-rem(700, ) ; 
+    border-radius: 1rem 1rem 10rem 1rem;       
+
     }  
 
     .input-container {
