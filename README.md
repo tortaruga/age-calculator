@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
--  [Add solution URL here](https://your-solution-url.com)
+-  [solution](https://www.frontendmentor.io/solutions/age-calculator-PvuK3YPec9)
 -  [live site](https://tortaruga.github.io/age-calculator/)
 
 ### Built with
