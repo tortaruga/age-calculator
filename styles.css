@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: hsl(0, 0%, 94%);
   font-family: poppins, sans-serif;
 }
@@ -14,6 +14,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: nowrap;
   align-items: center;
 }
 
@@ -27,6 +28,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 0.8rem;
   border-bottom: 0.05rem solid hsl(0, 0%, 86%);
@@ -38,6 +40,7 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  flex-wrap: nowrap;
   align-items: flex-start;
   gap: 0.3rem;
   font-weight: 700;
@@ -47,7 +50,7 @@ label {
 
 input {
   font-family: inherit;
-  font-size: 2rem;
+  font-size: 1.75rem;
   width: 6.25rem;
   border-radius: 0.5rem;
   border: 0.05rem solid hsl(0, 0%, 86%);
@@ -79,7 +82,7 @@ input {
 }
 
 .result-p {
-  font-size: 3.75rem;
+  font-size: calc(3.125rem + 1vw);
   font-style: italic;
   font-weight: 800;
   margin: 0;
@@ -122,7 +125,12 @@ label.err {
   color: hsl(0, 100%, 67%);
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 23.4375rem) {
+  .input-container {
+    flex-wrap: nowrap;
+  }
+}
+@media screen and (min-width: 50rem) {
   .age-calculator {
     padding-inline: 2rem;
     width: 43.75rem;

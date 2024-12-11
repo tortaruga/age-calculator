@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: $dir;
     justify-content: $justify;
+    flex-wrap: $wrap;
     align-items: $align;
 }
 
@@ -19,11 +20,11 @@
 
 body {
     margin: 0;
-    padding: 1rem;  
+    padding: 1.5rem;  
     background-color: $bg; 
     font-family: poppins, sans-serif; 
 } 
-
+ 
 
 main {
     min-height: 100vh;
@@ -35,12 +36,13 @@ main {
 .age-calculator {
     background-color: $white; 
     padding: 3rem  1.3rem;   
-    border-radius: 1rem 1rem 4rem 1rem;   
+    border-radius: 1rem 1rem 4rem 1rem;    
+
 }
 
 .input-container {
-    @include flex(row, center, baseline, ); 
-    gap: .8rem;    
+    @include flex(row, center, baseline, wrap);     
+    gap: .8rem;  
     border-bottom: .05rem solid $light-grey;
     padding-bottom: 2.5rem;       
 }
@@ -56,8 +58,8 @@ label {
 
 input {
     font-family: inherit; 
-    font-size: px-to-rem(32, );
-    width: px-to-rem(100, );
+    font-size: px-to-rem(28, ); 
+    width: px-to-rem(100, );   
     border-radius: .5rem;
     border: .05rem solid $light-grey; 
     padding: .5rem;   
@@ -89,8 +91,8 @@ input {
     color: $accent; 
 }
 
-.result-p {
-    font-size: px-to-rem(60, );   
+.result-p { 
+    font-size: calc(px-to-rem(50, ) + 1vw);   
     font-style: italic; 
     font-weight: 800; 
     margin: 0; 
@@ -133,7 +135,13 @@ label.err {
     color: $error;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: px-to-rem(375)) {
+    .input-container {
+        flex-wrap: nowrap; 
+    }
+}
+
+@media screen and (min-width: px-to-rem(800)) {
     .age-calculator {
         padding-inline: 2rem; 
         width: px-to-rem(700, ) ;

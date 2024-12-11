@@ -58,6 +58,7 @@ function isDayValid() {
         (yearInput.value % 400 === 0)) {
         maxDays[1] = 29;
     }
+
     // if negative or exceeding number of days in input month, return false
     // (and display error message)
     if (dayInput.value < 1 || dayInput.value > maxDays[monthInput.value - 1]) {
@@ -91,8 +92,8 @@ function isYearValid() {
         return false;
     }
 
-    // if future year return false (and display error message)
-    if (yearInput.value > new Date().getFullYear()) {
+    // if future date return false (and display error message)
+    if (new Date() < new Date(yearInput.value, monthInput.value - 1, dayInput.value)) { 
         errorYear.textContent = 'Must be in the past';
         return false; 
     } 
@@ -147,31 +148,51 @@ function handleError() {
 function getResult() {
     const today = new Date();
 
-    // calculate years of age
-    let ageYears = today.getFullYear() - yearInput.value; 
+    let ageYears;
+    let ageMonths;
+    let ageDays;
 
-    // calculate months of age (+1 because months returned by .getMonth() are 0 indexed)
-    let ageMonths = today.getMonth() + 1 - monthInput.value;
-    // if birthday month had not passed yet or if it's birthday month but birthday day has not passed adjust years and months 
-    // (remove one year and ad 12 to the month) 
-    if (ageMonths < 0 || (ageMonths === 0 && today.getDate() - dayInput.value < 0)) {
-        ageYears--;
-        ageMonths += 12;
-    }
+    // calculate years of age
+    ageYears = today.getFullYear() - yearInput.value;
 
     // calculate days of age
-    let ageDays = today.getDate() - dayInput.value; 
-    
+    ageDays = today.getDate() - dayInput.value; 
+
+    // calculate months of age (+1 because months returned by .getMonth() are 0 indexed)
+    ageMonths = today.getMonth() + 1 - monthInput.value;
+
+    // adjust results if days or months are negative
     if (ageDays < 0) { 
-        // if result is negative subtract one month and add the number of last month's days to daysAge
-        ageMonths = ageMonths === 11 ? 0 : ageMonths--; 
+        ageMonths--; 
+        // add number of days in the previous month
         ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); 
     }
- 
+
+    if (ageMonths < 0 ) {
+    ageYears--;
+    ageMonths += 12;
+    }
+
     // display the results
     yearsResult.textContent = ageYears;
     monthsResult.textContent = ageMonths;
     daysResult.textContent = ageDays;
+
+    countUpAnimation(yearsResult, ageYears, 500);
+    countUpAnimation(monthsResult, ageMonths, 500);
+    countUpAnimation(daysResult, ageDays, 500);
+
 }
 
-// 20 dec 2000
+function countUpAnimation(element, end, duration) {
+    let start = 0;
+    const intervalTime = duration / end;
+    const interval = setInterval(update, intervalTime); 
+ 
+    function update() {
+        element.textContent = ++start;
+        if (start === end) {
+            clearInterval(interval);
+        }
+    }
+}
